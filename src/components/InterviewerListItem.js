@@ -12,11 +12,11 @@ import "./InterviewerListItem.scss";
 export default function InterviewerListItem(props) {
 
 
-    let showName = "";
+    // let showName = "";
 
-    if (props.selected) {
-      showName = props.name
-    } 
+    // if (props.selected) {
+    //   showName = props.name
+    // } 
   
 
 
@@ -29,16 +29,15 @@ export default function InterviewerListItem(props) {
 
   return(
     <li
-      key={props.id}
       className={interviewersClass}
-      onClick={() => props.setInterviewer(props.name)}
+      onClick={props.setInterviewer}
     >
     <img
       className="interviewers__item-image"
       src={props.avatar}
       alt={props.name}
     />
-      {showName}
+      {props.selected && props.name}
     </li>
   )
 }
