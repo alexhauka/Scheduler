@@ -21,8 +21,7 @@ export default function DayListItem(props) {
     return `${props.spots} spots remaining`
   }
 
-  const dayClass = classnames("day", {
-    "day-list__item": true,
+  const dayClass = classnames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0
 
