@@ -36,9 +36,9 @@ export function getInterview(state, interview) {
     return null;
 
   } else {
-    // const interviewer = interview.interviewer
+    const interviewer = interview.interviewer
     results.student = interview.student;
-    results.interviewer = state.interviewers[interview.interviewer];
+    results.interviewer = state.interviewers[interviewer];
     
   }
 

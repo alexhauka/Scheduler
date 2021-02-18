@@ -6,10 +6,16 @@ import Show from "./Show";
 import Empty from "./Empty";
 import useVisualMode from "../../hooks/useVisualMode";
 import Form from './Form';
+import Status from "./Status";
+import Confirm from './Confirm';
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING ="SAVING";
+const EDIT = "EDIT";
+const DELETING = "DELETING";
+const CONFIRM = "CONFIRM";
 
 
 export default function Appointment(props) {
@@ -22,9 +28,27 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+    transition(SAVING);
     props.bookInterview(props.id, interview)
-    transition(SHOW);
+    .then(() => {
+      transition(SHOW);
+    })
   }
+
+  function confirmDelete() {
+    transition(CONFIRM);
+  }
+
+  function deleteInterview() {
+    transition(DELETING);
+    props.cancelInterview(props.id)
+    .then(() => {
+      transition(EMPTY);
+    })
+  };
+
+
+  
   
   return(
     <article className="appointment">
@@ -36,6 +60,8 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onEdit={() => transition(EDIT)}
+          onDelete={confirmDelete}
         />
       )}
       {mode === CREATE && (
@@ -43,6 +69,32 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           onSave={save}
           onCancel={() => back()}
+        />
+      )}
+      {mode === SAVING && (
+        <Status
+          message="Saving..."
+        />
+      )}
+      {mode === EDIT && (
+        <Form
+        interviewers={props.interviewers}
+        interviewer={props.interview.interviewer.id}
+        name={props.interview.student}
+        onSave={save}
+        onCancel={() => back()}
+        />
+      )}
+      {mode === DELETING && (
+        <Status
+          message="Deleting..."
+        />
+      )}
+      {mode === CONFIRM && (
+        <Confirm
+          message="Are you sure you would like to delete the interview?"
+          onCancel={() => back()}
+          onConfirm={deleteInterview}
         />
       )}
     </article>
