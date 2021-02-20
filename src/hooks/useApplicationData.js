@@ -137,7 +137,10 @@ function reducer(state, action) {
           id: id,
           interview: interview
         })
+        setSpots();
       }
+
+      
       return () => webSocket.close();
 
     }
