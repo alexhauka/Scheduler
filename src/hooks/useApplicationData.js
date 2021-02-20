@@ -15,9 +15,11 @@ export default function useApplicationData() {
     appointments: {}
   }
 
+
+
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  // const setDay = day => setState({...state, day});
+
 function reducer(state, action) {
   const { day, days, appointments, interviewers, id, interview } = action;
 
@@ -42,7 +44,7 @@ function reducer(state, action) {
     case SET_INTERVIEW: {
       const appointment = {
         ...state.appointments[id],
-        interview: { ...interview }
+        interview: interview && { ...interview }
       };
       const appointments = {
         ...state.appointments,
@@ -122,22 +124,42 @@ function reducer(state, action) {
   
   const setDay = day => dispatch({ type: SET_DAY, day });
 
+  
   //updates application data from APIs
   useEffect(() => {
+    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+
+    webSocket.onmessage = (event) => {
+      const { type, id, interview } = JSON.parse(event.data)
+      if (type === "SET_INTERVIEW") {
+        dispatch({
+          type: type,
+          id: id,
+          interview: interview
+        })
+      }
+      return () => webSocket.close();
+
+    }
+
+      
     Promise.all([
       axios.get('/api/days'),
       axios.get('/api/appointments'),
       axios.get('/api/interviewers')
-    ]).then((values) => {
+    ])
+    .then((values) => {
       dispatch({
         type: SET_APPLICATION_DATA,
         days: values[0].data,
         appointments: values[1].data,
         interviewers: values[2].data
-      });
-    });
-  }, []);
-
+      })
+    })  
+  },
+[]);
+    
+  
 
 
   return {
