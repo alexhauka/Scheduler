@@ -85,24 +85,16 @@ export default {
   }),
 
   put: jest.fn(async url => {
-    const id = fixtures.appointments["1"].id
-    if (url === `/api/appointments/${id}`) {
       await Promise.resolve({
         status: 204,
         statusText: "No Content",
       });
-      fixtures.days[0].spots = 0;
-    }
   }),
 
   delete: jest.fn(async url => {
-    const id = fixtures.appointments["1"].id
-    if (url === `/api/appointments/${id}`) {
       await Promise.resolve({
         status: 204,
         statusText: "No Content",
       });
-    }
-    fixtures.days[0].spots = 1;
   })
 }
