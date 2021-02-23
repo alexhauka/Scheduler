@@ -95,6 +95,11 @@ function reducer(state, action) {
     .then(() => {
       setSpots()
     })
+    .catch((error) => {
+      if (error) {
+        console.log(error)
+      }
+    })
   };
 
   function cancelInterview(id) {
@@ -152,6 +157,9 @@ function reducer(state, action) {
       axios.get('/api/interviewers')
     ])
     .then((values) => {
+
+
+      
       dispatch({
         type: SET_APPLICATION_DATA,
         days: values[0].data,
