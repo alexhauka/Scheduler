@@ -19,21 +19,21 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
 
-deploy:
-  machine:
-    enabled: true
+  deploy:
+    machine:
+      enabled: true
 
-  working_directory: ~/client
+    working_directory: ~/client
 
-  steps:
-    - add_ssh_keys:
-        fingerprints:
-          - "4a:94:a1:cf:4f:b8:bc:9f:0f:c3:6e:76:55:8a:8b:0c"
-    - checkout
-    - run:
-        name: Push Master to Production
-        command: |
-          git push https://github.com/alexhauka/LHL-scheduler.git master:production      
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "4a:94:a1:cf:4f:b8:bc:9f:0f:c3:6e:76:55:8a:8b:0c"
+      - checkout
+      - run:
+          name: Push Master to Production
+          command: |
+            git push https://github.com/alexhauka/LHL-scheduler.git master:production
 
 workflows:
   version: 2
