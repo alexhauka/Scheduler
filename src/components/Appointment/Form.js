@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import InterviewerList from "../InterviewerList"
+import InterviewerList from "../InterviewerList";
 import Button from "../Button";
 
 
+// renders the form to create/edit an interview
 export default function Form(props) {
-  const [name, setName] = useState(props.name || "")
-  const [interviewer, setInterviewer] = useState(props.interviewer || null)
+  const [name, setName] = useState(props.name || "");
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
   const reset = () => {
@@ -20,10 +21,8 @@ export default function Form(props) {
 
   }
 
-  // const saveForm = () => {
-  //   props.onSave(name, interviewer)
-  // }
 
+  // validates the submission and throws error if not valid
   const validate = () => {
     if (name === "") {
       setError("Student name cannot be blank");
@@ -62,5 +61,5 @@ export default function Form(props) {
       </section>
     </main>
   )
-}
+};
 

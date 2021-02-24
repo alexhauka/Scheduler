@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
-import "./styles.scss";
 
 import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
-import useVisualMode from "../../hooks/useVisualMode";
 import Form from './Form';
 import Status from "./Status";
 import Confirm from './Confirm';
 import Error from "./Error";
+
+import useVisualMode from "../../hooks/useVisualMode";
+
+import "./styles.scss";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -18,14 +20,16 @@ const EDIT = "EDIT";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const ERROR_SAVE = "ERROR_SAVE";
-const ERROR_DELETE = "ERROR_DELETE"
+const ERROR_DELETE = "ERROR_DELETE";
 
 
+// Appointment component comprised of the piecemeal components in this directory
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   ); 
 
+  // saves the interview
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -37,13 +41,15 @@ export default function Appointment(props) {
       transition(SHOW);
     })
     .catch(() => {
-        transition(ERROR_SAVE, true)
+        transition(ERROR_SAVE, true);
     }) 
-  }
+  };
 
+
+  // asks the user to confirm before deleting
   function confirmDelete() {
     transition(CONFIRM);
-  }
+  };
 
   function deleteInterview() {
     transition(DELETING, true);
@@ -52,9 +58,10 @@ export default function Appointment(props) {
       transition(EMPTY);
     })
     .catch(() => {
-        transition(ERROR_DELETE, true)
+        transition(ERROR_DELETE, true);
     }) 
   };
+
 
   useEffect(() => {
     if (props.interview && mode === EMPTY) {
@@ -130,4 +137,4 @@ export default function Appointment(props) {
       )}
     </article>
   )
-}
+};

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button";
 
-
+// Confirm component for deleting interview
 export default function Confirm(props) {
 
 
@@ -24,4 +24,4 @@ export default function Confirm(props) {
       </section>
     </main>
   )
-}
+};

@@ -1,14 +1,16 @@
 import React from "react";
-import useApplicationData from "../../src/hooks/useApplicationData"
+
+import useApplicationData from "../../src/hooks/useApplicationData";
 import DayList from "components/DayList";
-import Appointment from "components/Appointment"
-import {getAppointmentsForDay, getInterviewersForDay, getInterview} from "helpers/selectors"
+import Appointment from "components/Appointment";
+
+import {getAppointmentsForDay, getInterviewersForDay, getInterview} from "helpers/selectors";
 
 import "components/Application.scss";
 
 
 
-
+// main Application component to render in React, uses the Appointment component from src/components/index
 export default function Application(props) {
 
   const { state, setDay, bookInterview, cancelInterview } = useApplicationData();  
@@ -62,6 +64,6 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
+};
 
 

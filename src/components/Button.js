@@ -2,6 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import "components/Button.scss";
 
+// renders Button
 export default function Button(props) {
   
   //classnames takes "button" as the class to add on to
@@ -20,4 +21,4 @@ export default function Button(props) {
       {props.children}
     </button>
   );
-}
+};

@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-
+// renders empty appointment
 export default function Empty(props) {
 
 
@@ -16,4 +16,4 @@ export default function Empty(props) {
       />
     </main>
   )
-}
+};

@@ -56,7 +56,7 @@ const fixtures = {
 export default {
 
   defaults: { baseURL: "" },
-
+  // mocks GET request for api/days
   get: jest.fn(url => {
 
     if (url === "/api/days") {
@@ -65,25 +65,27 @@ export default {
         statusText: "OK",
         data: fixtures.days
       });
-    }
-
+    };
+    // mocks GET request for api/appointments
     if (url === "/api/appointments") {
       return Promise.resolve({
         status: 200,
         statusText: "OK",
         data: fixtures.appointments
       });
-    }
-
+    };
+    // mocks GET request for api/interviewers
     if (url === "/api/interviewers") {
       return Promise.resolve({
         status: 200,
         statusText: "OK",
         data: fixtures.interviewers
       });
-    }
+    };
   }),
 
+
+  // mocks PUT request for api/appointments
   put: jest.fn(async url => {
       await Promise.resolve({
         status: 204,
@@ -91,10 +93,12 @@ export default {
       });
   }),
 
+  
+  // mocks DELETE request for api/appointments
   delete: jest.fn(async url => {
       await Promise.resolve({
         status: 204,
         statusText: "No Content",
       });
   })
-}
+};

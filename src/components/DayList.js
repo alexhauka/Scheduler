@@ -1,14 +1,8 @@
-//takes in 3 props:
-//
-// days:    Array a list of day objects (each object includes an id, name, and spots)
-// day:     String the currently selected day
-// setDay:  Function accepts the name of the day eg. "Monday", "Tuesday"
-
 import React from "react";
 
-import DayListItem from "components/DayListItem"
+import DayListItem from "components/DayListItem";
 
-
+// renders the schedule's days
 export default function DayList(props) {
 
   const dayList = props.days.map(day => (
@@ -26,4 +20,4 @@ export default function DayList(props) {
       {dayList}
     </ul>
   )
-}
+};

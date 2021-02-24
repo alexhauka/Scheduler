@@ -1,7 +1,7 @@
 import React from "react";
 
 
-
+// Renders interviews in the scheduler
 export default function Show(props) {
 
 
@@ -32,4 +32,4 @@ export default function Show(props) {
       </section>
     </main>
   )
-}
+};

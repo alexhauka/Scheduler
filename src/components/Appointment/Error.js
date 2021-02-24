@@ -1,5 +1,6 @@
 import React from "react";
 
+// Error message shown when failing to save/delete
 export default function Error(props) {
 
 
@@ -17,4 +18,4 @@ export default function Error(props) {
       />
     </main>
   )
-}
+};

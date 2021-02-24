@@ -1,6 +1,3 @@
-// interviewers:array  - an array of objects for each interviewer
-// interviewer:number    - the id of an interviewer
-// setInterviewer:function - accepts an interviewer id
 import PropTypes from "prop-types";
 import React from "react";
 import InterviewerListItem from "components/InterviewerListItem";
@@ -8,7 +5,7 @@ import "./InterviewerList.scss";
 
 
 
-
+// renders the list of interviewers
 export default function InterviewerList(props) {
 
 
@@ -35,8 +32,9 @@ export default function InterviewerList(props) {
       </ul>
     </section>
   )
-}
+};
 
+// ensures an array is passed as a prop
 InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired
 };

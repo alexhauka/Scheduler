@@ -1,5 +1,6 @@
 import React from 'react';
 
+// renders the Header component
 export default function Header(props) {
 
 
@@ -9,4 +10,4 @@ export default function Header(props) {
       <hr className="appointment__separator" />
     </header>
   )
-}
+};

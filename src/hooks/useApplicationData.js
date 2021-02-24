@@ -9,6 +9,7 @@ import reducer, {
 } from "reducers/application";
 
 
+// custom hook for the state of Application
 export default function useApplicationData() {
 
   const initialState = {
@@ -16,9 +17,9 @@ export default function useApplicationData() {
     days: [],
     interviewers: {},
     appointments: {}
-  }
+  };
   
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState);
   
 
   function bookInterview(id, interview) {
@@ -29,20 +30,20 @@ export default function useApplicationData() {
         type: SET_INTERVIEW,
         id,
         interview
-      })
-      // setSpots()
-    })
+      });
+    });
   };
 
   function cancelInterview(id) {
+
     return axios.delete(`/api/appointments/${id}`)
     .then(() => {
       dispatch({
         type: SET_INTERVIEW,
         id,
         interview: null });
-    })
-  }
+    });
+  };
 
   
   
@@ -54,20 +55,19 @@ export default function useApplicationData() {
     const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
 
     webSocket.onmessage = (event) => {
-      const { type, id, interview } = JSON.parse(event.data)
+      const { type, id, interview } = JSON.parse(event.data);
       if (type === "SET_INTERVIEW") {
         dispatch({
           type: type,
           id: id,
           interview: interview
-        })
-        // setSpots();
-      }
+        });
+      };
 
       
       return () => webSocket.close();
 
-    }
+    };
 
       
     Promise.all([
@@ -76,16 +76,13 @@ export default function useApplicationData() {
       axios.get('/api/interviewers')
     ])
     .then((values) => {
-
-
-      
       dispatch({
         type: SET_APPLICATION_DATA,
         days: values[0].data,
         appointments: values[1].data,
         interviewers: values[2].data
-      })
-    })  
+      });
+    });
   },
 []);
     
@@ -97,5 +94,5 @@ export default function useApplicationData() {
     setDay,
     bookInterview,
     cancelInterview
-  }
-}
+  };
+};
