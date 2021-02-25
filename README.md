@@ -23,38 +23,45 @@ The Interview Scheduler is a React-based single-page-application for booking stu
 
 **Testing:** Jest, Storybook, Cypress, React Testing Library
 
-## Screenshots
-
-!["Main Page"]()*The main page upon loading the application*
-
-!["Mobile First"]()*Mobile-first development*
-
-!["Booking an Interview"]()*Booking an Interview*
-
-!["Status"]()*A status message appears when saving or deleting*
-
-!["Blank Name"]()*Error handling for blank name input*
-
-!["Error Handling"]()*An example of the messaged received when failing to save*
-
-!["Jest Coverage"]()*Tests cover 93% of all code*
-
-!["Storybook"]()*Story book is used to test react components in isolation*
-
-![Cypress Gif]()*Cypress was used to test end-to-end systems*
-
-
-
-## Setup
-
-- Install dependencies with `npm install`
-- Fork and clone the [api-server](https://github.com/alexhauka/scheduler-api)
-- Run the api-server and the client concurrently
-
-## URL preview via Netlify
+## Preview via Netlify
 
 - [Netlify URL](https://6036b042f4b6e20a0f5f40e9--musing-ride-234ebb.netlify.app/)
-- It may require going to [API URL](https://scheduler-alexhauka.herokuapp.com/api/days) in order to refresh the API database; in which case, wait a few minutes before trying the netlify link again
+- It may require going to the [api URL](https://scheduler-alexhauka.herokuapp.com/api/days) in order to refresh the API database; in which case, wait a moment before trying the preview link again
+
+## Screenshots
+
+!["Main Page"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/main%20page.png?raw=true)*The main page upon loading the application*
+
+!["Mobile First"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/mobile%20first.png?raw=true)*Mobile-first development*
+
+!["Booking an Interview"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/booking%20an%20interview.png?raw=true)*Booking an Interview*
+
+!["Status"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/status.png?raw=true)*A status message appears when saving or deleting*
+
+!["Blank Name"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/blank%20name.png?raw=true)*Error handling for things like blank name input*
+
+!["Error Handling"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/error%20handling.png?raw=true)*An example of the messaged received when failing to save*
+
+!["Jest Coverage"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/jest%20coverage.png?raw=true)*Tests cover 93% of all code*
+
+!["Storybook"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/storybook.png?raw=true)*Story book is used to test react components in isolation*
+
+![Cypress Gif](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/cypress(cropped).gif?raw=true)*Cypress was used to test end-to-end systems*
+
+
+
+# Setup
+
+1. Install dependencies with `npm install`
+2. Fork and clone the [api-server](https://github.com/alexhauka/scheduler-api)
+3. Run the api-server and the client **concurrently**
+
+
+## Running the Webpack Dev Server
+
+```sh
+npm start
+```
 
 ## Running Jest Test Framework
 
@@ -68,7 +75,7 @@ npm test
 npm run storybook
 ```
 
-## Running Cypress end-to-end test
+## Running Cypress End-to-End Test
 
 ```sh
 npm run cypress
