@@ -25,7 +25,7 @@ The Interview Scheduler is a React-based single-page-application for booking stu
 
 ## Preview via Netlify
 
-- [Netlify URL](https://6036b042f4b6e20a0f5f40e9--musing-ride-234ebb.netlify.app/)
+- A quick preview can be found at the [Netlify URL](https://6036b042f4b6e20a0f5f40e9--musing-ride-234ebb.netlify.app/)
 - It may require going to the [api URL](https://scheduler-alexhauka.herokuapp.com/api/days) in order to refresh the API database; in which case, wait a moment before trying the preview link again
 
 ## Screenshots
