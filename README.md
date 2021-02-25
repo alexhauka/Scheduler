@@ -15,9 +15,34 @@ The Interview Scheduler is a React-based single-page-application for booking stu
 - A user can change the details of an existing interview by pressing the edit icon
 - A user can cancel an existing interview, a pop-up message will ask to confirm the action before permanently - deleting an interview
 
+## Stack
+
+**Front-End:** React, JSX, HTML, SCSS, JS
+
+**Back-End:** Express, Axios, Node.js, PostgreSQL
+
+**Testing:** Jest, Storybook, Cypress, React Testing Library
+
 ## Screenshots
 
-!["Main Page"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/main%20page.png)
+!["Main Page"]()*The main page upon loading the application*
+
+!["Mobile First"]()*Mobile-first development*
+
+!["Booking an Interview"]()*Booking an Interview*
+
+!["Status"]()*A status message appears when saving or deleting*
+
+!["Blank Name"]()*Error handling for blank name input*
+
+!["Error Handling"]()*An example of the messaged received when failing to save*
+
+!["Jest Coverage"]()*Tests cover 93% of all code*
+
+!["Storybook"]()*Story book is used to test react components in isolation*
+
+![Cypress Gif]()*Cypress was used to test end-to-end systems*
+
 
 
 ## Setup

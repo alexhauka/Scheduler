@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import { render, cleanup, fireEvent, getByAltText } from "@testing-library/react";
 
 import Form from "components/Appointment/Form";
 
@@ -32,21 +32,24 @@ describe("Form", () => {
     const onSave = jest.fn()
     const { getByText } = render(<Form interviewers={interviewers} name="" onSave={onSave}/>);
     fireEvent.click(getByText("Save"));
-    /* 1. validation is shown */
+
     expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
-    /* 2. onSave is not called */
+
     expect(onSave).not.toHaveBeenCalled();
   });
   
   it("can successfully save after trying to submit an empty student name", () => {
+
     const onSave = jest.fn();
-    const { getByText, getByPlaceholderText, queryByText } = render(
+    
+    const { getByText, getByAltText, getByPlaceholderText, queryByText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
     );
   
     fireEvent.click(getByText("Save"));
   
     expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
+
     expect(onSave).not.toHaveBeenCalled();
   
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
@@ -54,11 +57,20 @@ describe("Form", () => {
     });
   
     fireEvent.click(getByText("Save"));
+
+    expect(getByText(/Must pick an interviewer/i)).toBeInTheDocument();
   
     expect(queryByText(/student name cannot be blank/i)).toBeNull();
+
+    expect(onSave).not.toHaveBeenCalled();
+
+    fireEvent.click(getByAltText("Sylvia Palmer"));
+
+    fireEvent.click(getByText("Save"));
   
     expect(onSave).toHaveBeenCalledTimes(1);
-    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", null);
+
+    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
   });
 
   it("calls onCancel and resets the input field", () => {
