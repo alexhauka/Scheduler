@@ -17,7 +17,7 @@ The Interview Scheduler is a React-based single-page-application for booking stu
 
 ## Screenshots
 
-<!-- !["Main Page"]() -->
+!["Main Page"](https://github.com/alexhauka/LHL-scheduler/blob/master/docs/main%20page.png)
 
 
 ## Setup
